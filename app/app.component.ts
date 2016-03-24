@@ -19,8 +19,8 @@ export class AppComponent {
     this.coffees = [
       new Coffee(["Water Ave", "Guatemala Santa Isabel", 18, "Central America", "Aged black tea, fig jam"]),
       new Coffee(["Heart", "Ethiopia Duromina", 22, "Africa", "Peach, brown sugar"]),
-      new Coffee(["Blue Bottle", "Kenya Kiambu Yara Peaberry", 16, "Africa", "Hibiscus, lemon"]),
-      new Coffee(["49th Parallel", "Hondruas el ocotillo - late harvest", 21, "Central America", "peach, tamarind"])
+      new Coffee(["Blue Bottle", "Kenya Kiambu Yara Peaberry", 16, "Africa", "hibiscus, lemon"]),
+      new Coffee(["49th Parallel", "Hondruas el Ocotillo - Late Harvest", 21, "Central America", "peach, tamarind"])
     ];
   }
   coffeeWasSelected(clickedCoffee: Coffee): void {
