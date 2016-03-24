@@ -6,7 +6,6 @@ import { Coffee } from './coffee.model';
   inputs: ['coffee'],
   template: `
   <h4>EDIT COFFEE</h4>
-  <br>
   <div class="edit-form">
     <h5>Brand:</h5>
     <input [(ngModel)]="coffee.brand" class="edit-form"/>
