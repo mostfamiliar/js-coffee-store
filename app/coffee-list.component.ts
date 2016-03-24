@@ -32,6 +32,8 @@ export class CoffeeListComponent {
   public onCoffeeSelect: EventEmitter<Coffee>;
   public filterRegion: string = "all";
   public selectedCoffee: Coffee;
+  public coffeeCart: Coffee[];
+
   constructor() {
     this.onCoffeeSelect = new EventEmitter();
   }
@@ -47,5 +49,9 @@ export class CoffeeListComponent {
   onChange(filterOption) {
       console.log(this.coffeeList);
     this.filterRegion = filterOption;
+  }
+  deleteCoffee(coffee: Coffee, coffeeCart: Coffee[]): void {
+    var index = coffeeCart.indexOf(coffee);
+    coffeeCart.splice(index, 1);
   }
 }

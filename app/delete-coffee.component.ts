@@ -19,6 +19,4 @@ export class DeleteCoffeeComponent {
     var index = this.coffeeList.indexOf(coffee);
     this.coffeeList.splice(index, 1);
   }
-
-
 }
