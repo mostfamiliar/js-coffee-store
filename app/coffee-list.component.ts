@@ -2,13 +2,14 @@ import { Component, EventEmitter } from 'angular2/core';
 import { CoffeeComponent } from './coffee.component';
 import { Coffee } from './coffee.model';
 import { RegionPipe } from './region-pipe';
+import { EditCoffeeComponent } from './edit-coffee.component';
 
 @Component({
   selector: 'coffee-list',
   inputs: ['coffeeList'],
   outputs: ['onCoffeeSelect'],
   pipes: [RegionPipe],
-  directives: [CoffeeComponent],
+  directives: [CoffeeComponent, EditCoffeeComponent],
   template: `
     <select (change)="onChange($event.target.value)" class="filter form-control">
       <option value="all">Show All</option>
@@ -18,6 +19,7 @@ import { RegionPipe } from './region-pipe';
     </select>
     <coffee-display *ngFor="#coffee of coffeeList | region:filterRegion" (click)="coffeeClicked(coffee)" [class.selected]="coffee === selectedCoffee" [coffee]="coffee">
     </coffee-display>
+    <edit-coffee *ngIf="selectedCoffee" [coffee]="selectedCoffee"></edit-coffee>
   `
 })
 

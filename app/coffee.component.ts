@@ -6,7 +6,11 @@ import { Coffee } from './coffee.model';
   inputs: ['coffee'],
   template: `
   <br>
-  <h2>{{ coffee.brand }}{{ coffee.name }} | {{ coffee.price }} {{ coffee.region }} {{ coffee.tastingNotes }}</h2>
+  <div class="coffeeDisplay">
+    <h2>{{ coffee.name }} \${{ coffee.price }}</h2>
+    <h4>{{ coffee.brand }} {{ coffee.region }}</h4>
+    <h6>{{ coffee.tastingNotes }}</h6>
+  </div>
   `
 
 })
