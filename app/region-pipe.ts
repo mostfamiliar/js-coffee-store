@@ -9,8 +9,6 @@ import { Coffee } from './coffee.model';
 export class RegionPipe implements PipeTransform {
   transform(input: Coffee[], args) {
     var desiredCoffeeFilter = args[0];
-    console.log(args[0]);
-    console.log(input);
     if(desiredCoffeeFilter === 'african') {
       return input.filter((coffee) => {
          return coffee.region === 'Africa';

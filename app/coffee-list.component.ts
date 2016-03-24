@@ -4,6 +4,7 @@ import { Coffee } from './coffee.model';
 import { RegionPipe } from './region-pipe';
 import { EditCoffeeComponent } from './edit-coffee.component';
 import { NewCoffeeComponent } from './add-coffee.component';
+import { DeleteCoffeeComponent } from './delete-coffee.component';
 
 
 @Component({
@@ -11,7 +12,7 @@ import { NewCoffeeComponent } from './add-coffee.component';
   inputs: ['coffeeList'],
   outputs: ['onCoffeeSelect'],
   pipes: [RegionPipe],
-  directives: [CoffeeComponent, EditCoffeeComponent, NewCoffeeComponent],
+  directives: [CoffeeComponent, EditCoffeeComponent, NewCoffeeComponent, DeleteCoffeeComponent],
   template: `
     <select (change)="onChange($event.target.value)" class="filter form-control">
       <option value="all">Show All</option>
@@ -19,12 +20,10 @@ import { NewCoffeeComponent } from './add-coffee.component';
       <option value="central america">Central America</option>
       <option value="south america">South America</option>
     </select>
-    <coffee-display *ngFor="#coffee of coffeeList | region:filterRegion" (click)="coffeeClicked(coffee)" [class.selected]="coffee === selectedCoffee" [coffee]="coffee">
+    <coffee-display *ngFor="#coffee of coffeeList | region:filterRegion" (click)="coffeeClicked(coffee)" [class.selected]="coffee === selectedCoffee" [coffee]="coffee" [coffeeList]="coffeeList">
     </coffee-display>
     <edit-coffee *ngIf="selectedCoffee" [coffee]="selectedCoffee"></edit-coffee>
     <new-coffee (onSubmitNewCoffee)="createCoffee($event)"></new-coffee>
-
-
   `
 })
 
