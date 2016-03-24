@@ -6,16 +6,23 @@ import { Coffee } from './coffee.model';
   pure: false
 })
 
-export class RegionPipe implements PipeTransform{
+export class RegionPipe implements PipeTransform {
   transform(input: Coffee[], args) {
     var desiredCoffeeFilter = args[0];
     console.log(args[0]);
+    console.log(input);
     if(desiredCoffeeFilter === 'african') {
-
+      return input.filter((coffee) => {
+         return coffee.region === 'Africa';
+      })
     } else if(desiredCoffeeFilter === 'central america') {
-
+      return input.filter((coffee) => {
+        return coffee.region === 'Central America';
+      });
     } else if (desiredCoffeeFilter === 'south america') {
-
+      return input.filter((coffee) => {
+        return coffee.region === 'South America';
+      });
     } else {
       return input;
     }

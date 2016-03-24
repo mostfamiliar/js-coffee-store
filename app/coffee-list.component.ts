@@ -1,21 +1,31 @@
 import { Component, EventEmitter } from 'angular2/core';
 import { CoffeeComponent } from './coffee.component';
 import { Coffee } from './coffee.model';
+import { RegionPipe } from './region-pipe';
 
 @Component({
   selector: 'coffee-list',
   inputs: ['coffeeList'],
   outputs: ['onCoffeeSelect'],
+  pipes: [RegionPipe],
   directives: [CoffeeComponent],
   template: `
-    <coffee-display *ngFor="#coffee of coffeeList" (click)="coffeeClicked(coffee)" [class.selected]="coffee === selectedCoffee" [coffee]="coffee">
+    <select (change)="onChange($event.target.value)" class="filter form-control">
+      <option value="all">Show All</option>
+      <option value="african">African</option>
+      <option value="central america">Central America</option>
+      <option value="south america">South America</option>
+    </select>
+    <coffee-display *ngFor="#coffee of coffeeList | region:filterRegion" (click)="coffeeClicked(coffee)" [class.selected]="coffee === selectedCoffee" [coffee]="coffee">
     </coffee-display>
   `
 })
 
 export class CoffeeListComponent {
   public coffeeList: Coffee[];
+
   public onCoffeeSelect: EventEmitter<Coffee>;
+  public filterRegion: string = "all";
   public selectedCoffee: Coffee;
   constructor() {
     this.onCoffeeSelect = new EventEmitter();
@@ -24,4 +34,16 @@ export class CoffeeListComponent {
     this.selectedCoffee = clickedCoffee;
     this.onCoffeeSelect.emit(clickedCoffee);
   }
+  onChange(filterOption) {
+      console.log(this.coffeeList);
+    this.filterRegion = filterOption;
+  }
 }
+
+
+// <select (change)="onChange($event.target.value)" class="filter form-control">
+//   <option value="all">Show All</option>
+//   <option value="african">African</option>
+//   <option value="central america">Central America</option>
+//   <option value="south america">South America</option>
+// </select>

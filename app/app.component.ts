@@ -20,7 +20,8 @@ export class AppComponent {
       new Coffee(["Water Ave", "Guatemala Santa Isabel", 18, "Central America", "Aged black tea, fig jam"]),
       new Coffee(["Heart", "Ethiopia Duromina", 22, "Africa", "Peach, brown sugar"]),
       new Coffee(["Blue Bottle", "Kenya Kiambu Yara Peaberry", 16, "Africa", "hibiscus, lemon"]),
-      new Coffee(["49th Parallel", "Hondruas el Ocotillo - Late Harvest", 21, "Central America", "peach, tamarind"])
+      new Coffee(["49th Parallel", "Hondruas el Ocotillo - Late Harvest", 21, "Central America", "peach, tamarind"]),
+      new Coffee(["Stumptown", "Peru Chirinos", 21, "South America", "Fuji apple, vanilla, and chocolate"])
     ];
   }
   coffeeWasSelected(clickedCoffee: Coffee): void {
